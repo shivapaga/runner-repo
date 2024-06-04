@@ -7,15 +7,8 @@ jobs:
   create-runners:
     runs-on: ubuntu-latest
     steps:
-      - name: Create Runners in runner-repo
-        run: |
-          curl -X POST \
-          -H "Authorization: token ${{ secrets.RUNNER_TOKEN }}" \
-          -H "Accept: application/vnd.github.v3+json" \
-          https://api.github.com/repos/shivapaga/runner-repo/actions/runners/registration-token \
-          | jq -r .token > token.txt
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-          export RUNNER_TOKEN=$(cat token.txt)
-          
-          # Register runners
-          ./config.sh --url https://github.com/shivapaga/runner-repo --token $RUNNER_TOKEN --name my-runner --labels label1,label2
+      - name: Run config.sh
+        run: ./config.sh --url shivapaga/runner-repo --token ${{ secrets.RUNNER_TOKEN }} --name my-runner --labels "label1,label2"
