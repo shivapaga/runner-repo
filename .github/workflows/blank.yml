@@ -10,9 +10,9 @@ jobs:
       - name: Create Runners in runner-repo
         run: |
           curl -X POST \
-          -H "Authorization: token ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
+          -H "Authorization: token ${{ secrets.RUNNER_TOKEN }}" \
           -H "Accept: application/vnd.github.v3+json" \
-          https://api.github.com/repos/your-username/app1/actions/runners/registration-token \
+          https://api.github.com/repos/shivapaga/runner-repo/actions/runners/registration-token \
           | jq -r .token > token.txt
 
           export RUNNER_TOKEN=$(cat token.txt)
