@@ -11,4 +11,4 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run config.sh
-        run: ./config.sh --url shivapaga/runner-repo --token ${{ secrets.RUNNER_TOKEN }} --name my-runner --labels "label1,label2"
+        run: .github/workflows/config.sh --url shivapaga/runner-repo --token ${{ secrets.RUNNER_TOKEN }} --name my-runner --labels "label1,label2"
