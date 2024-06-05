@@ -65,7 +65,7 @@ RUNNER_ALLOW_RUNASROOT="1" ./config.sh --url "https://github.com/$REPO_URL" --to
 
 # Register runner
 RESPONSE=$(curl -s -X POST \
-     -H "Authorization: token $TOKEN" \
+     -H "Authorization: token $RUNNER_TOKEN" \
      -H "Accept: application/vnd.github.v3+json" \
      "https://api.github.com/repos/$REPO_URL/actions/runners" \
      -d "{\"name\": \"$NAME\", \"labels\": $LABELS_JSON}")
